@@ -12,7 +12,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 20px;
+    padding: 10px;
     background-image: radial-gradient(#ffb6c1 10%, transparent 11%),
                       radial-gradient(#ffb6c1 10%, transparent 11%);
     background-size: 60px 60px;
@@ -29,11 +29,13 @@ body {
 .gift-preview {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
-    padding: 25px;
+    padding: 15px;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.3);
     text-align: center;
     position: relative;
     overflow: hidden;
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 .gift-preview::before {
@@ -56,28 +58,28 @@ body {
 }
 
 .gift-message {
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 .gift-message h1 {
     color: #ff4d94;
-    font-size: 24px;
-    margin-bottom: 15px;
+    font-size: 22px;
+    margin-bottom: 10px;
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
 }
 
 .gift-message p {
     color: #ff758c;
-    font-size: 16px;
-    margin-bottom: 10px;
-    line-height: 1.5;
+    font-size: 15px;
+    margin-bottom: 6px;
+    line-height: 1.4;
 }
 
 .gift-image-container {
     position: relative;
-    margin: 25px auto;
-    width: 200px;
-    height: 200px;
+    margin: 15px auto;
+    width: 220px;
+    height: 220px;
 }
 
 .gift-image {
@@ -153,49 +155,46 @@ body {
     z-index: 10;
 }
 
-.countdown {
-    margin: 25px 0;
-    padding: 15px;
-    background: rgba(255, 230, 240, 0.8);
-    border-radius: 10px;
-}
-
-.countdown p {
-    color: #ff4d94;
-    margin-bottom: 10px;
-    font-weight: bold;
-}
-
-#timer {
+.character-container {
+    margin: 5px 0 10px 0;
+    position: relative;
     display: flex;
     justify-content: center;
-    gap: 15px;
-    font-size: 18px;
-    color: #ff758c;
+    width: 100%;
+    overflow: visible;
+    height: auto;
 }
 
-#timer span {
-    background: #fff;
-    border: 2px solid #ffb6c1;
-    border-radius: 8px;
-    padding: 5px 10px;
-    display: inline-block;
-    min-width: 30px;
-    font-weight: bold;
-    color: #ff4d94;
+.character {
+    position: relative;
+    width: 320px;
+    height: 160px;
+    margin-top: 0;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
+
+.character img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* 已移除浮动动画 */
 
 .actions {
-    margin-top: 25px;
+    margin-top: 10px;
 }
 
 .btn {
     background: linear-gradient(to right, #ff4d94, #ff758c);
     color: white;
     border: none;
-    padding: 12px 30px;
+    padding: 10px 25px;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;

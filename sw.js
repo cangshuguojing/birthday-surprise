@@ -13,7 +13,8 @@ const CACHE_URLS = [
 
 // 图片资源列表
 const IMAGE_URLS = [
-  './images/gift.png'
+  './images/gift.png',
+  './images/character.png'
 ];
 
 // 安装服务工作线程时，预缓存资源

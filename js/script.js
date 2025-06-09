@@ -12,47 +12,19 @@ if ('serviceWorker' in navigator) {
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 礼物到达日期 - 设置为3天后
-    const arrivalDate = new Date();
-    arrivalDate.setDate(arrivalDate.getDate() + 3);
-    
-    // 倒计时更新
-    function updateCountdown() {
-        const now = new Date();
-        const diff = arrivalDate - now;
+    // 角色动画效果
+    const characterImg = document.getElementById('characterImg');
+    if (characterImg) {
+        // 图片加载完成时的处理
+        characterImg.onload = function() {
+            characterImg.classList.add('loaded');
+        };
         
-        // 如果已经到达，显示到达信息
-        if (diff <= 0) {
-            document.getElementById('days').textContent = '0';
-            document.getElementById('hours').textContent = '0';
-            document.getElementById('minutes').textContent = '0';
-            document.getElementById('seconds').textContent = '0';
-            
-            const countdownP = document.querySelector('.countdown p');
-            if (countdownP) {
-                countdownP.textContent = '礼物已经在路上啦！随时会到～';
-            }
-            return;
+        // 如果图片已经缓存，直接触发loaded
+        if (characterImg.complete) {
+            characterImg.classList.add('loaded');
         }
-        
-        // 计算剩余天数、小时、分钟、秒数
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-        
-        // 更新显示
-        document.getElementById('days').textContent = days;
-        document.getElementById('hours').textContent = hours;
-        document.getElementById('minutes').textContent = minutes;
-        document.getElementById('seconds').textContent = seconds;
     }
-    
-    // 立即更新一次倒计时
-    updateCountdown();
-    
-    // 每秒更新一次倒计时
-    setInterval(updateCountdown, 1000);
     
     // 创建随机漂浮的心形
     function createHearts() {
