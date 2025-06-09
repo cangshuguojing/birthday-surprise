@@ -121,9 +121,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // 创建心形动画
     createHearts();
     
-    // 礼物图片悬浮效果
+    // 礼物图片加载处理
     const giftImg = document.getElementById('giftImg');
+    const giftImageContainer = giftImg.parentElement;
+    
     if (giftImg) {
+        // 图片加载完成时的处理
+        giftImg.onload = function() {
+            giftImg.classList.add('loaded');
+            giftImageContainer.classList.add('loaded');
+        };
+        
+        // 如果图片已经缓存，直接触发loaded
+        if (giftImg.complete) {
+            giftImg.classList.add('loaded');
+            giftImageContainer.classList.add('loaded');
+        }
+        
         giftImg.addEventListener('mouseover', function() {
             this.style.transform = 'scale(1.05)';
         });
