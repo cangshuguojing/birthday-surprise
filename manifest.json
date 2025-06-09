@@ -1,0 +1,16 @@
+{
+  "name": "生日惊喜礼物预览",
+  "short_name": "生日惊喜",
+  "description": "一个可爱的生日礼物预览页面",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffeff4",
+  "theme_color": "#ff4d94",
+  "icons": [
+    {
+      "src": "images/gift.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+} 
