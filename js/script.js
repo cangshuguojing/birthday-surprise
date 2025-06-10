@@ -26,35 +26,47 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // 创建随机漂浮的心形
+    // 创建粉色小爱心
     function createHearts() {
         const heartsContainer = document.querySelector('.hearts');
         
-        for (let i = 0; i < 15; i++) {
+        // 预定义的粉色系列
+        const pinkColors = [
+            '#ffb6c1', // 浅粉红
+            '#ff69b4', // 热情的粉红
+            '#ffc0cb', // 粉红
+            '#ffb7ce', // 浅玫瑰
+            '#ff91a4'  // 鲜粉红
+        ];
+        
+        // 创建更多小爱心
+        for (let i = 0; i < 20; i++) {
             setTimeout(() => {
                 const heart = document.createElement('div');
                 heart.innerHTML = '❤';
                 heart.className = 'heart';
+                
+                // 随机选择一个粉色
+                const randomPink = pinkColors[Math.floor(Math.random() * pinkColors.length)];
+                
+                // 设置更小的爱心尺寸和粉色系列颜色
                 heart.style.cssText = `
                     position: absolute;
-                    font-size: ${Math.random() * 10 + 10}px;
-                    color: rgba(255, ${Math.random() * 50 + 100}, ${Math.random() * 50 + 150}, ${Math.random() * 0.6 + 0.4});
+                    font-size: ${Math.random() * 6 + 6}px;
+                    color: ${randomPink};
                     left: ${Math.random() * 100}%;
                     top: ${Math.random() * 100}%;
-                    animation: float-heart ${Math.random() * 5 + 3}s linear infinite;
+                    animation: float-heart ${Math.random() * 4 + 2}s linear infinite;
                     z-index: 5;
                     pointer-events: none;
                     opacity: 0;
+                    text-shadow: 0 0 2px #fff;
                 `;
                 
                 heartsContainer.appendChild(heart);
                 
                 // 添加动画关键帧
                 const style = document.createElement('style');
-                const animationName = `float-heart-${i}`;
-                
-                const startX = Math.random() * 100;
-                const endX = startX + (Math.random() * 40 - 20);
                 
                 style.textContent = `
                     @keyframes float-heart {
@@ -63,13 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
                             opacity: 0;
                         }
                         10% {
-                            opacity: 1;
+                            opacity: 0.8;
                         }
-                        90% {
-                            opacity: 1;
+                        80% {
+                            opacity: 0.8;
                         }
                         100% {
-                            transform: translate(${Math.random() * 40 - 20}px, -${Math.random() * 100 + 50}px) rotate(${Math.random() * 90 - 45}deg);
+                            transform: translate(${Math.random() * 30 - 15}px, -${Math.random() * 60 + 30}px) rotate(${Math.random() * 60 - 30}deg);
                             opacity: 0;
                         }
                     }
@@ -77,16 +89,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 document.head.appendChild(style);
                 
-                // 循环动画
+                // 循环动画，更快的循环
                 setInterval(() => {
                     heart.style.animation = 'none';
                     heart.offsetHeight; // 触发重绘
                     heart.style.left = `${Math.random() * 100}%`;
                     heart.style.top = `${Math.random() * 100}%`;
-                    heart.style.animation = `float-heart ${Math.random() * 5 + 3}s linear`;
-                }, (Math.random() * 3000) + 2000);
+                    heart.style.animation = `float-heart ${Math.random() * 4 + 2}s linear`;
+                }, (Math.random() * 2000) + 1000);
                 
-            }, i * 300);
+            }, i * 200);
         }
     }
     
