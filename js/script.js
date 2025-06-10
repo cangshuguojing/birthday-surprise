@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function createHearts() {
         const heartsContainer = document.querySelector('.hearts');
         
-        // 预定义的粉色系列
+        // 预定义的浅粉色系列
         const pinkColors = [
-            '#ffb6c1', // 浅粉红
-            '#ff69b4', // 热情的粉红
-            '#ffc0cb', // 粉红
-            '#ffb7ce', // 浅玫瑰
-            '#ff91a4'  // 鲜粉红
+            '#ffd1d9', // 非常浅的粉红
+            '#ffc6d0', // 浅粉红
+            '#ffdbdf', // 超浅粉红
+            '#ffc9d3', // 淡粉红
+            '#ffe0e6'  // 粉白色
         ];
         
         // 创建更多小爱心
