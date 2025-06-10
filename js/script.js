@@ -42,26 +42,55 @@ document.addEventListener('DOMContentLoaded', function() {
         // 创建更多小爱心
         for (let i = 0; i < 20; i++) {
             setTimeout(() => {
+                // 使用div而不是HTML实体创建爱心
                 const heart = document.createElement('div');
-                heart.innerHTML = '❤';
                 heart.className = 'heart';
                 
                 // 随机选择一个粉色
                 const randomPink = pinkColors[Math.floor(Math.random() * pinkColors.length)];
+                const fontSize = Math.random() * 6 + 6;
                 
-                // 设置更小的爱心尺寸和粉色系列颜色
+                // 使用CSS伪元素创建爱心
                 heart.style.cssText = `
                     position: absolute;
-                    font-size: ${Math.random() * 6 + 6}px;
-                    color: ${randomPink};
+                    width: ${fontSize}px;
+                    height: ${fontSize}px;
                     left: ${Math.random() * 100}%;
                     top: ${Math.random() * 100}%;
                     animation: float-heart ${Math.random() * 4 + 2}s linear infinite;
                     z-index: 5;
                     pointer-events: none;
                     opacity: 0;
-                    text-shadow: 0 0 2px #fff;
+                    background-color: ${randomPink};
+                    transform: rotate(45deg);
+                    filter: drop-shadow(0 0 1px rgba(255, 255, 255, 0.7));
                 `;
+                
+                // 添加伪元素来形成爱心形状
+                const beforeAfter = document.createElement('style');
+                beforeAfter.textContent = `
+                    .heart:before, .heart:after {
+                        content: '';
+                        width: 100%;
+                        height: 100%;
+                        background-color: inherit;
+                        border-radius: 50%;
+                        position: absolute;
+                        top: 0;
+                    }
+                    .heart:before {
+                        left: -50%;
+                    }
+                    .heart:after {
+                        top: -50%;
+                        left: 0;
+                    }
+                `;
+                
+                if (!document.querySelector('style.heart-pseudo')) {
+                    beforeAfter.className = 'heart-pseudo';
+                    document.head.appendChild(beforeAfter);
+                }
                 
                 heartsContainer.appendChild(heart);
                 
